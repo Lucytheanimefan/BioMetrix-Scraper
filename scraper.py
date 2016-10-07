@@ -24,6 +24,7 @@ twitter_stream.filter(track=['#sports'])
 
 # tokenize the file and print
 tweetParser.read_and_tokenize_file("data.json")
+tweetParser.count_word_frequencies("data.json")
 
 def process_or_store(tweet):
     print(json.dumps(tweet))

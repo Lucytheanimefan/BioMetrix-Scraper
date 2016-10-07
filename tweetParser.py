@@ -1,5 +1,11 @@
 import json
 import re
+import operator
+import json
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+import string
 
 emoticons_str = r"""
         (?:
@@ -25,6 +31,12 @@ tokens_re = re.compile(r'(' + '|'.join(regex_str) + ')', re.VERBOSE | re.IGNOREC
 emoticon_re = re.compile(r'^' + emoticons_str + '$', re.VERBOSE | re.IGNORECASE)
 
 
+# Getting common, insignificant words for NLTK
+nltk.download()
+punctuation = list(string.punctuation)
+common_words = stopwords.words('english') + punctuation + ['rt', 'via']
+
+
 def tokenize(s):
     return tokens_re.findall(s)
 
@@ -39,6 +51,7 @@ class tweetParser():
 
     global tokens_re
     global emoticon_re
+    global common_words
 
     @classmethod
     def read_and_tokenize_file(self, file_name):
@@ -47,4 +60,19 @@ class tweetParser():
                 tweet = json.loads(line)
                 tokens = preprocess(tweet['text'])
                 print(tokens)
+
+    @classmethod
+    def count_word_frequencies(self, file_name):
+        with open(file_name, 'r') as f:
+            count_all = Counter()
+            for line in f:
+                tweet = json.loads(line)
+                # Create a list with all the terms
+                terms = [term for term in preprocess(tweet['text']) if term not in common_words]
+                # Update the counter
+                count_all.update(set(terms))
+            # Print the first 20 most frequent words
+            print(count_all.most_common(20))
+
+
 
