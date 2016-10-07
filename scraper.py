@@ -3,10 +3,8 @@ This is the main script that calls the functions from other classes and is used 
 '''
 
 from tweepy import OAuthHandler
-import json
-
-from TwitterListener import *
 from tweetParser import *
+import tweepy
 
 # set up
 consumer_key = 'O9eiLjL4S0eCI7XA0BlcQtqVr'
