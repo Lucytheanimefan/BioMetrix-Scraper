@@ -32,7 +32,6 @@ emoticon_re = re.compile(r'^' + emoticons_str + '$', re.VERBOSE | re.IGNORECASE)
 
 
 # Getting common, insignificant words for NLTK
-nltk.download()
 punctuation = list(string.punctuation)
 common_words = stopwords.words('english') + punctuation + ['rt', 'via']
 
