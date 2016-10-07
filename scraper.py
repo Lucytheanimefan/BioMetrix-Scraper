@@ -1,8 +1,12 @@
-import tweepy
+'''
+This is the main script that calls the functions from other classes and is used for testing
+'''
+
 from tweepy import OAuthHandler
 import json
-from tweepy import Stream
-import TwitterListener
+
+from TwitterListener import *
+from tweetParser import *
 
 # set up
 consumer_key = 'O9eiLjL4S0eCI7XA0BlcQtqVr'
@@ -14,9 +18,14 @@ auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth)
 
+'''
 # set up stream
 twitter_stream = Stream(auth, TwitterListener())
-twitter_stream.filter(track=['#anime'])
+twitter_stream.filter(track=['#sports'])
+'''
+
+# tokenize the file and print
+tweetParser.read_and_tokenize_file("data.json")
 
 def process_or_store(tweet):
     print(json.dumps(tweet))

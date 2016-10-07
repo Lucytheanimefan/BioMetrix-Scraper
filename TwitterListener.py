@@ -1,5 +1,3 @@
-import tweepy
-from tweepy import Stream
 from tweepy.streaming import StreamListener
 
 
@@ -13,6 +11,6 @@ class TwitterListener(StreamListener):
             print(str(e))
             return True
 
-        def on_error(self, status):
-            print(status)
-            return True
+    def on_error(self, status):
+        print(status)
+        return True
