@@ -29,6 +29,6 @@ tweetParser.count_word_frequencies("data.json")
 def process_or_store(tweet):
     print(json.dumps(tweet))
 
-for status in tweepy.Cursor(api.home_timeline).items(10):
-    process_or_store(status._json)
+#for status in tweepy.Cursor(api.home_timeline).items(10):
+#    process_or_store(status._json)
 
