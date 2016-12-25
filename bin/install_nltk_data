@@ -23,4 +23,4 @@ cd ${NLTK_DATA}
 # Delete all of the zip files
 find . -name "*.zip" -type f -delete
 
-echo "-----> Finished nltk data installation, did it wor"
+echo "-----> Finished nltk data installation, did it work?"
