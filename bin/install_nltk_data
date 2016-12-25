@@ -3,7 +3,7 @@
 
 source $BIN_DIR/utils
 
-echo "-----> Starting nltk data installation"
+echo "-----> Starting nltk data installation blah blah Lucy"
 
 # Assumes NLTK_DATA environment variable is already set
 # $ heroku config:set NLTK_DATA='/app/nltk_data'
