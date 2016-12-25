@@ -58,7 +58,8 @@ class tweetParser():
             for line in f:
                 tweet = json.loads(line)
                 tokens = preprocess(tweet['text'])
-                print(tokens)
+                #print(tokens)
+                return tokens
 
     @classmethod
     def count_word_frequencies(self, file_name):
@@ -71,7 +72,9 @@ class tweetParser():
                 # Update the counter
                 count_all.update(set(terms))
             # Print the first 20 most frequent words
+            print "--------------MOST COMMON WORDS:-------"
             print(count_all.most_common(20))
+            return count_all.most_common(20)
 
 
 
