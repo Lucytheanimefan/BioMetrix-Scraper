@@ -7,6 +7,8 @@ import nltk
 from nltk.corpus import stopwords
 import string
 
+nltk.data.path.append('path_to_nltk_data')
+
 emoticons_str = r"""
         (?:
             [:=;] # Eyes
