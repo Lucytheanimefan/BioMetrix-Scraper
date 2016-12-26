@@ -107,11 +107,11 @@ def GetMimeMessage(service, user_id, msg_id):
   """
   try:
     message = service.users().messages().get(userId=user_id, id=msg_id,
-                                             format='raw').execute()
+                                             format='full').execute()
 
     print 'Message snippet: %s' % message['snippet']
 
-    msg_str = base64.urlsafe_b64decode(message['raw'].encode('ASCII'))
+    msg_str = base64.urlsafe_b64decode(message['full'].encode('ASCII'))
 
     mime_msg = email.message_from_string(msg_str)
 

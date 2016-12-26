@@ -60,6 +60,7 @@ def main():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('gmail', 'v1', http=http)
 
+    '''
     #GET https://www.googleapis.com/gmail/v1/users/userId/labels
     results = service.users().labels().list(userId='me').execute()
     labels = results.get('labels', [])
@@ -69,11 +70,14 @@ def main():
     else:
       print('Labels:')
       for label in labels:
-        print(label['name'])
+        print(label['name']+":")
+        print(label)
+    '''
 
-    print("messages")
-    for stuff in ListMessagesMatchingQuery(service, "me", "dinner"):
-        print(GetMessage(service, "me", stuff["id"]))
+    #print("messages")
+    for stuff in ListMessagesWithLabels(service, "me", ["Label_1"]):
+        #print(stuff)
+        print(GetMessage(service, "me", stuff["id"])["snippet"])
 
 
 if __name__ == '__main__':
