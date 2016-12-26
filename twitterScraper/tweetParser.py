@@ -30,7 +30,7 @@ regex_str = [
 tokens_re = re.compile(r'(' + '|'.join(regex_str) + ')', re.VERBOSE | re.IGNORECASE)
 emoticon_re = re.compile(r'^' + emoticons_str + '$', re.VERBOSE | re.IGNORECASE)
 
-nltk.data.path.append('/../nltk_data')
+nltk.data.path.append('/../nltk_data/corpus/reader/')
 
 # Getting common, insignificant words for NLTK
 punctuation = list(string.punctuation)
